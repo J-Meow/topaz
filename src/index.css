@@ -3,6 +3,7 @@
     --text: #cdd6f4;
     --mantle: #181825;
     --surface-0: #313244;
+    --surface-1: #45475a;
     --red: #f38ba8;
     --maroon: #eba0ac;
     --peach: #fab387;
@@ -42,18 +43,40 @@ html {
     width: 100vw;
     height: 100vh;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
-#tracks {
+.flex-row {
     display: flex;
-    width: 220px;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+#tracks,
+#overall,
+#pianoroll {
+    background: var(--surface-0);
+    display: flex;
+}
+#tracks,
+#overall {
     height: 100%;
     flex-direction: column;
-    background: var(--surface-0);
+}
+#tracks {
+    width: 220px;
+    margin-right: 2px;
+}
+#overall {
+    width: 100%;
 }
 .track {
     width: 100%;
     height: 80px;
+}
+#overall .track {
+    background: var(--surface-1);
+}
+#tracks .track {
     background: var(--red);
     color: var(--base);
     display: flex;
@@ -62,4 +85,9 @@ html {
 }
 .track:not(:last-of-type) {
     border-bottom: 2px solid #0005;
+}
+#pianoroll {
+    width: 100%;
+    height: 50%;
+    margin-top: 2px;
 }
