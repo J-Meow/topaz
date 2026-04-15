@@ -5,14 +5,15 @@ const instrumentTypeDisplayMap: { [key: string]: string } = {
 }
 let song = {
     tracks: [
-        { type: "oscillator", name: "Track 1" },
-        { type: "oscillator", name: "Track 2" },
+        { type: "oscillator", name: "Track 1", color: "red" },
+        { type: "oscillator", name: "Track 2", color: "maroon" },
     ],
 }
 function showTracks() {
     song.tracks.forEach((track) => {
         const trackElement = document.createElement("div")
         trackElement.className = "track"
+        trackElement.style.backgroundColor = "var(--" + track.color + ")"
         const trackNameElement = document.createElement("span")
         trackNameElement.innerText = track.name
         const trackTypeElement = document.createElement("span")
