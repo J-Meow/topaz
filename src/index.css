@@ -135,7 +135,7 @@ html {
 #piano button:not(.black):hover {
     background: var(--subtext-1);
 }
-#piano button:not(.black):active {
+#piano button:not(.black).active {
     background: var(--subtext-0);
 }
 #piano button.black {
@@ -151,6 +151,6 @@ html {
 #piano button.black:hover {
     background: var(--crust);
 }
-#piano button.black:active {
+#piano button.black.active {
     background: var(--mantle);
 }
