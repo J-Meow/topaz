@@ -141,12 +141,19 @@ html {
 #piano button.black {
     background: var(--base);
     height: 10px;
-    width: 40px;
-    margin-left: 10px;
+    width: 30px;
     margin-top: -5px;
     margin-bottom: -5px;
     position: relative;
     top: -1px;
+}
+#piano button.black::after {
+    content: "";
+    position: absolute;
+    height: 10px;
+    width: 50px;
+    top: 0;
+    left: 0;
 }
 #piano button.black:hover {
     background: var(--crust);
