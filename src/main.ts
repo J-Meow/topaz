@@ -14,19 +14,19 @@ let song = {
     tracks: [
         {
             type: "oscillator",
-            name: "Track 1",
+            name: "square waveeee",
             color: "red",
             instrumentSettings: { wave: "square" },
         },
         {
             type: "oscillator",
-            name: "Track 2",
+            name: "triiangllleee",
             color: "maroon",
             instrumentSettings: { wave: "triangle" },
         },
         {
             type: "oscillator",
-            name: "Track 3",
+            name: "SINE",
             color: "peach",
             instrumentSettings: { wave: "sine" },
         },
@@ -85,6 +85,12 @@ function hertzFromPianoKey(key: number) {
 }
 elements.pianoKeys.forEach((element, i) => {
     element.addEventListener("mousedown", (ev) => {
+        let selectedInstrument = song.tracks[state.selectedTrack].type
+        if (selectedInstrument != "oscillator") {
+            alert("ERROR: SOMETHING WEIRD HAPPENED")
+        }
+        let instrumentSettings =
+            song.tracks[state.selectedTrack].instrumentSettings
         ev.preventDefault()
         if (state.piano.key in elements.pianoKeys) {
             elements.pianoKeys[state.piano.key].classList.remove("active")
@@ -101,7 +107,7 @@ elements.pianoKeys.forEach((element, i) => {
             hertzFromPianoKey(state.piano.key),
             audioCtx.currentTime,
         )
-        state.piano.oscillator.type = "square"
+        state.piano.oscillator.type = instrumentSettings.wave as OscillatorType
         state.piano.oscillator.connect(audioCtx.destination)
         state.piano.oscillator.start()
     })
