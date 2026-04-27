@@ -7,6 +7,7 @@
     --crust: #232634;
     --surface-0: #313244;
     --surface-1: #45475a;
+    --surface-2: #585b70;
     --red: #f38ba8;
     --maroon: #eba0ac;
     --peach: #fab387;
@@ -85,12 +86,18 @@ html {
 #overall .track {
     background: var(--surface-1);
 }
+#overall .track.selected {
+    background: var(--surface-2);
+}
 #tracks .track {
     background: var(--red);
-    color: var(--base);
+    color: var(--surface-1);
     display: flex;
     flex-direction: column;
     padding: 10px;
+}
+#tracks .track.selected {
+    color: var(--base);
 }
 .track:not(:last-of-type) {
     border-bottom: 2px solid #0005;

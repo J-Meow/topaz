@@ -12,8 +12,24 @@ for (let key = 0; key < elements.pianoKeys.length; key++) {
 }
 let song = {
     tracks: [
-        { type: "oscillator", name: "Track 1", color: "red" },
-        { type: "oscillator", name: "Track 2", color: "maroon" },
+        {
+            type: "oscillator",
+            name: "Track 1",
+            color: "red",
+            instrumentSettings: { wave: "square" },
+        },
+        {
+            type: "oscillator",
+            name: "Track 2",
+            color: "maroon",
+            instrumentSettings: { wave: "triangle" },
+        },
+        {
+            type: "oscillator",
+            name: "Track 3",
+            color: "peach",
+            instrumentSettings: { wave: "sine" },
+        },
     ],
 }
 let state: {
@@ -28,7 +44,7 @@ let state: {
     },
 }
 function showTracks() {
-    song.tracks.forEach((track) => {
+    song.tracks.forEach((track, i) => {
         const trackElement = document.createElement("div")
         trackElement.className = "track"
         trackElement.style.backgroundColor = "var(--" + track.color + ")"
@@ -42,6 +58,25 @@ function showTracks() {
         const overallViewTrackElement = document.createElement("div")
         overallViewTrackElement.className = "track"
         elements.overallView.appendChild(overallViewTrackElement)
+        if (state.selectedTrack == i) {
+            trackElement.classList.add("selected")
+            overallViewTrackElement.classList.add("selected")
+        }
+        trackElement.addEventListener("click", () => {
+            elements.trackList.children[state.selectedTrack].classList.remove(
+                "selected",
+            )
+            elements.overallView.children[state.selectedTrack].classList.remove(
+                "selected",
+            )
+            state.selectedTrack = i
+            elements.trackList.children[state.selectedTrack].classList.add(
+                "selected",
+            )
+            elements.overallView.children[state.selectedTrack].classList.add(
+                "selected",
+            )
+        })
     })
 }
 showTracks()
